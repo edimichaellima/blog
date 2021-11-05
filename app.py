@@ -21,8 +21,7 @@ class Posts(db.Model):
 
 @app.route('/')
 def index():
-    posts = Posts.query.all()
-    return render_template('index.html', posts=posts)
+    return render_template('index.html')
 
 def get_post(post_id):
    post = Posts.query.filter_by(id=post_id).first()
