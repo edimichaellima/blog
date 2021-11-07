@@ -13,43 +13,47 @@
   </head>
   <body>
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="{{ url_for('index')}}">PreserV/Arvoreja</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('create')}}">Nova postagem</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('inicial')}}">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-            {% block content %} {% endblock %}
-        </div>
-            <footer>
-                <div>
-                    <ul>
-                        <li>Gostou das Postagens?</li>
-                        <a href="https://forms.office.com/r/f2ScGWrrii" >Avalie o Web Site e dê sua opinião</a>
-                        <li>Quer conhecer as árvores adequadas para o plantio sustentável na Cidade?</li>
-                        <a href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/meio_ambiente/MARBOURB.pdf">Manual Técnico de Secretaria Municipal do Verde e do Meio Ambiente Urbana</a>
-                        <li>Quer saber mais sobre Meio Ambiente e plantio de mudas de árvores? Acesse:</li>
-                            <ul>
-                                <li><a href="https://www.sosma.org.br/">SOS Mata Atlântica</a></li>
-                                <li><a href="https://www.wwf.org.br/">WWF</a></li>
-                                <li><a href="https://www.prefeitura.sp.gov.br/cidade/secretarias/meio_ambiente/parques/index.php?p=284396">Secretária Meio Ambiente - São Paulo/SP</a></li>
-                            </ul>
-                    </ul>
+        <div class="header clearfix">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <h3 class="text-muted"><a class="navbar-brand" href="{{ url_for('index')}}">PreserV/Arvoreja</a></h3>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                      <ul class="navbar-nav">
+                        <li class="nav-item text-muted"><a class="nav-link" href="{{url_for('create')}}">Nova Postagem</a></li>
+                        <li class="nav-item text-muted"><a class="nav-link" href="{{url_for('inicial')}}">Blog</a></li>
+                        <li class="nav-item text-muted"><a class="nav-link" href="#">Sobre</a></li>
+                      </ul>
                 </div>
+            </nav>
+        </div>
+
+        <main role="main" class="container">
+          <div class="jumbotron">
+            {% block content %} {% endblock %}
+          </div>
+        </main>
+
+
+            <footer>
+                <ul>
+                    <li>Gostou das Postagens?</li>
+                        <a href="https://forms.office.com/r/f2ScGWrrii">Avalie o Web Site e dê sua opinião</a>
+                    <li>Quer conhecer as árvores adequadas para o plantio sustentável na Cidade?</li>
+                        <a href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/meio_ambiente/MARBOURB.pdf">Manual Técnico de Secretaria Municipal do Verde e do Meio Ambiente Urbana</a>
+                    <li>Quer saber mais sobre Meio Ambiente e plantio de mudas de árvores? Acesse:</li>
+                        <ul>
+                            <li>
+                                <a href="https://www.sosma.org.br/">SOS Mata Atlântica</a>
+                            </li>
+                            <li>
+                                <a href="https://www.wwf.org.br/">WWF</a>
+                            </li>
+                            <li>
+                                <a href="https://www.prefeitura.sp.gov.br/cidade/secretarias/meio_ambiente/parques/index.php?p=284396">Secretária Meio Ambiente - São Paulo/SP</a>
+                            </li>
+                        </ul>
+                </ul>
             </footer>
+
     </div>
 
     <!-- Optional JavaScript -->
