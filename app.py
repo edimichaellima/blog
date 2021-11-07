@@ -18,16 +18,21 @@ class Posts(db.Model):
    title = db.Column(db.String(80), nullable=False)
    content = db.Column(db.String(200), nullable=False)
 
+
 @app.route('/')
 def index():
-    posts = Posts.query.all()
-    return render_template('index.html', posts=posts)
+    return render_template('index.html')
 
 def get_post(post_id):
    post = Posts.query.filter_by(id=post_id).first()
    if post is None:
       abort(404)
    return post
+
+@app.route('/inicial')
+def inicial():
+    posts = Posts.query.all()
+    return render_template('inicial.html', posts=posts)
 
 @app.route('/<int:post_id>')
 def post(post_id):
@@ -46,7 +51,7 @@ def create():
             post = Posts(title=title, content=content)
             db.session.add(post)
             db.session.commit()
-            return redirect(url_for('index'))
+            return redirect(url_for('inicial'))
 
     return render_template('create.html')
 
@@ -64,7 +69,7 @@ def edit(id):
             post.title = title
             post.content = content
             db.session.commit()
-            return redirect(url_for('index'))
+            return redirect(url_for('inicial'))
 
     return render_template('edit.html', post=post)
 
@@ -74,4 +79,4 @@ def delete(id):
     db.session.delete(post)
     db.session.commit()
     flash('"{}" foi apagado com sucesso!'.format(post.title))
-    return redirect(url_for('index'))
+    return redirect(url_for('inicial'))
